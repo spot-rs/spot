@@ -223,7 +223,7 @@ impl SpotMprisPlayer {
     }
 
     #[dbus_interface(signal)]
-    pub async fn seeked(ctxt: &SignalContext<'_>, Position: i64) -> zbus::Result<()>;
+    pub async fn sought(ctxt: &SignalContext<'_>, Position: i64) -> zbus::Result<()>;
 
     #[dbus_interface(property)]
     pub fn can_control(&self) -> bool {

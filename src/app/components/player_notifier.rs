@@ -35,7 +35,7 @@ impl EventListener for PlayerNotifier {
             AppEvent::PlaybackEvent(PlaybackEvent::TrackChanged(id)) => {
                 SpotifyId::from_base62(id).ok().map(Command::PlayerLoad)
             }
-            AppEvent::PlaybackEvent(PlaybackEvent::TrackSeeked(position)) => {
+            AppEvent::PlaybackEvent(PlaybackEvent::TrackSought(position)) => {
                 Some(Command::PlayerSeek(*position))
             }
             AppEvent::LoginEvent(LoginEvent::LoginStarted(LoginStartedEvent::Password {

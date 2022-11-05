@@ -150,7 +150,7 @@ impl EventListener for PlaybackControl {
                 self.update_current_info();
             }
             AppEvent::PlaybackEvent(PlaybackEvent::SeekSynced(pos))
-            | AppEvent::PlaybackEvent(PlaybackEvent::TrackSeeked(pos)) => {
+            | AppEvent::PlaybackEvent(PlaybackEvent::TrackSought(pos)) => {
                 self.sync_seek(*pos);
             }
             AppEvent::SelectionEvent(SelectionEvent::SelectionModeChanged(active)) => {
