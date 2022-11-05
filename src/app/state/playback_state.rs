@@ -250,7 +250,7 @@ pub enum PlaybackEvent {
     PlaybackPaused,
     PlaybackResumed,
     RepeatModeChanged(RepeatMode),
-    TrackSeeked(u32),
+    TrackSought(u32),
     SeekSynced(u32),
     VolumeSet(f64),
     TrackChanged(String),
@@ -385,7 +385,7 @@ impl UpdatableState for PlaybackState {
                 self.dequeue(&[id]);
                 vec![PlaybackEvent::PlaylistChanged]
             }
-            PlaybackAction::Seek(pos) => vec![PlaybackEvent::TrackSeeked(pos)],
+            PlaybackAction::Seek(pos) => vec![PlaybackEvent::TrackSought(pos)],
             PlaybackAction::SyncSeek(pos) => vec![PlaybackEvent::SeekSynced(pos)],
             PlaybackAction::SetVolume(volume) => vec![PlaybackEvent::VolumeSet(volume)],
             _ => vec![],

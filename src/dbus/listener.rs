@@ -112,7 +112,7 @@ impl AppPlaybackStateListener {
             PlaybackEvent::ShuffleChanged => {
                 Some(MprisStateUpdate::SetShuffled(self.is_shuffled()))
             }
-            PlaybackEvent::TrackSeeked(pos) | PlaybackEvent::SeekSynced(pos) => {
+            PlaybackEvent::TrackSought(pos) | PlaybackEvent::SeekSynced(pos) => {
                 let pos = 1000 * (*pos as u128);
                 Some(MprisStateUpdate::SetPositionMs(pos))
             }

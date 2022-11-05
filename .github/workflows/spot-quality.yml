@@ -1,14 +1,22 @@
 name: spot-quality
 
 on:
-  push:  
+  push:
   pull_request:
 
 jobs:
+  typos-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: crate-ci/typos@master
+        with:
+          config: ./.github/workflows/typos.toml
+
   ci-check:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -27,10 +35,10 @@ jobs:
           command: fmt
           args: --all -- --check
 
-  shellcheck:
+  shell-check:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
-            sudo apt-get -y update && sudo apt-get -y install shellcheck
-            find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
+          sudo apt-get -y update && sudo apt-get -y install shellcheck
+          find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
